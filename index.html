@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="A searchable hub for JohnComputers projects, apps, games, tools, and websites.">
+  <title>Project Hub</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#projects">Skip to projects</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="./" aria-label="Project Hub home">
+        <span class="brand-mark" id="brandMark">JC</span>
+        <span class="brand-copy">
+          <strong id="brandName">Project Hub</strong>
+          <span id="brandEyebrow">JohnComputers</span>
+        </span>
+      </a>
+
+      <nav class="top-nav" aria-label="Primary">
+        <a href="#projects">Projects</a>
+        <a href="#categories">Categories</a>
+        <a id="githubProfileLink" href="https://github.com/JohnComputers" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="customize-link" href="./customizer.html">Customize</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="kicker" id="heroKicker">BUILD • SHIP • REPEAT</p>
+          <h1 id="heroTitle">Everything I build, in one place.</h1>
+          <p class="hero-subtitle" id="heroSubtitle">Apps, tools, experiments, games, websites, and school projects — searchable and ready to open.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">Browse projects</a>
+            <a class="button secondary" id="heroGithubLink" href="https://github.com/JohnComputers" target="_blank" rel="noreferrer">View GitHub</a>
+          </div>
+        </div>
+
+        <div class="hero-stats" aria-label="Project statistics">
+          <div class="stat">
+            <strong id="repoCount">—</strong>
+            <span>public projects</span>
+          </div>
+          <div class="stat">
+            <strong id="liveCount">—</strong>
+            <span>live sites</span>
+          </div>
+          <div class="stat">
+            <strong id="categoryCount">—</strong>
+            <span>categories</span>
+          </div>
+          <div class="status-line">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span id="syncStatus">Connecting to GitHub…</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="toolbar-section" aria-label="Project controls">
+      <div class="search-wrap">
+        <label class="sr-only" for="searchInput">Search projects</label>
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search" placeholder="Search projects, descriptions, languages, categories…" autocomplete="off">
+        <kbd>/</kbd>
+      </div>
+
+      <div class="toolbar-row">
+        <div class="filter-group" id="quickFilters" aria-label="Quick filters">
+          <button type="button" class="chip active" data-filter="all">All</button>
+          <button type="button" class="chip" data-filter="live">Live sites</button>
+          <button type="button" class="chip" data-filter="featured">Featured</button>
+        </div>
+
+        <label class="sort-control">
+          <span>Sort</span>
+          <select id="sortSelect">
+            <option value="featured">Featured first</option>
+            <option value="updated">Recently updated</option>
+            <option value="name">Name A–Z</option>
+            <option value="stars">Most starred</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="category-section" id="categories" aria-labelledby="categoriesTitle">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">EXPLORE</p>
+          <h2 id="categoriesTitle">Categories</h2>
+        </div>
+        <button type="button" class="text-button" id="clearCategory" hidden>Clear category</button>
+      </div>
+      <div class="category-strip" id="categoryStrip" aria-live="polite"></div>
+    </section>
+
+    <section class="projects-section" id="projects" aria-labelledby="projectsTitle">
+      <div class="section-heading project-heading">
+        <div>
+          <p class="section-kicker">PROJECTS</p>
+          <h2 id="projectsTitle">All projects</h2>
+          <p class="results-copy" id="resultsCopy">Loading your repositories…</p>
+        </div>
+        <div class="view-toggle" role="group" aria-label="Project view">
+          <button type="button" class="icon-button active" id="gridViewButton" aria-label="Grid view" title="Grid view">▦</button>
+          <button type="button" class="icon-button" id="listViewButton" aria-label="List view" title="List view">☷</button>
+        </div>
+      </div>
+
+      <div class="project-grid" id="projectGrid" aria-live="polite"></div>
+
+      <div class="empty-state" id="emptyState" hidden>
+        <span class="empty-icon">⌕</span>
+        <h3>No matching projects</h3>
+        <p>Try a different search term or clear your filters.</p>
+        <button type="button" class="button secondary" id="resetFilters">Reset filters</button>
+      </div>
+
+      <div class="load-error" id="loadError" hidden>
+        <h3>GitHub did not respond.</h3>
+        <p>The hub can still use your configured projects. Try reloading in a moment.</p>
+        <button type="button" class="button secondary" id="retryButton">Retry</button>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="about-card">
+        <div>
+          <p class="section-kicker">ABOUT THIS HUB</p>
+          <h2 id="aboutTitle">Built to stay current.</h2>
+        </div>
+        <p id="aboutText">This site pulls public repository data directly from GitHub, then applies a custom configuration for featured projects, categories, descriptions, launch links, and appearance.</p>
+        <a class="button secondary" href="./customizer.html">Open Customizer</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <strong id="footerBrand">Project Hub</strong>
+      <span id="footerText">Built from GitHub.</span>
+    </div>
+    <div class="footer-links">
+      <a id="footerGithubLink" href="https://github.com/JohnComputers" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="./customizer.html">Customize</a>
+    </div>
+  </footer>
+
+  <template id="projectTemplate">
+    <article class="project-card">
+      <div class="card-topline">
+        <span class="category-badge"></span>
+        <span class="featured-badge" hidden>Featured</span>
+      </div>
+      <div class="project-main">
+        <div class="project-title-row">
+          <span class="project-icon" aria-hidden="true"></span>
+          <div>
+            <h3 class="project-title"></h3>
+            <p class="repo-name"></p>
+          </div>
+        </div>
+        <p class="project-description"></p>
+      </div>
+      <div class="project-meta"></div>
+      <div class="project-actions">
+        <a class="button primary launch-button" target="_blank" rel="noreferrer">Launch</a>
+        <a class="button secondary repo-button" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </article>
+  </template>
+
+  <script src="./site.config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
