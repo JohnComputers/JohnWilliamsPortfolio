@@ -9,7 +9,6 @@ A public, searchable launcher for the projects on the **JohnComputers** GitHub a
 - Filters archived, empty, forked, or manually hidden repositories according to `site.config.js`.
 - Detects GitHub Pages sites and repository homepage URLs and gives them a **Launch** button.
 - Supports search, categories, featured projects, live-site filtering, sorting, grid/list views, and mobile layouts.
-- Includes a browser-based **Customizer** at `customizer.html`.
 
 ## Main files
 
@@ -17,41 +16,18 @@ A public, searchable launcher for the projects on the **JohnComputers** GitHub a
 - `styles.css` — layout and component styling.
 - `app.js` — GitHub loading, filtering, categorization, sorting, and rendering.
 - `site.config.js` — the main control file. Most normal changes should happen here.
-- `customizer.html` + `customizer.js` — visual editor and config exporter.
 - `.github/workflows/pages.yml` — automatic GitHub Pages deployment.
 
 ## Customizing the site
 
-Open the live site's **Customize** page. You can adjust branding, hero text, theme colors, card sizing, featured repositories, hidden repositories, and the entire JSON configuration.
+Customization is owner-only through the GitHub repository. Edit `site.config.js` on the `main` branch to control branding, theme colors, featured repositories, hidden repositories, categories, project overrides, labels, launch URLs, and custom CSS.
 
-The advanced configuration includes:
+For deeper changes, edit:
+- `styles.css` for appearance
+- `index.html` for layout
+- `app.js` for behavior
 
-- `github`
-- `brand`
-- `theme`
-- `repositoryRules`
-- `featured`
-- `categories`
-- `projectOverrides`
-- `labels`
-- `customCss`
-
-For a specific repo, add an entry under `projectOverrides`:
-
-```js
-"PromptLab": {
-  title: "PromptLab",
-  description: "Custom description",
-  category: "AI",
-  icon: "✦",
-  launchUrl: "https://example.com",
-  hideLaunch: false,
-  hidden: false,
-  tags: ["AI", "Prompts"]
-}
-```
-
-The visual Customizer downloads a replacement `site.config.js`. Replace the existing file in this repository and commit it. The Pages workflow will redeploy automatically.
+Because these files are changed through GitHub, only accounts with write access to this repository can publish customizations.
 
 ## Publishing
 
